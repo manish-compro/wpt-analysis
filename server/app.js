@@ -26,7 +26,7 @@ const corsOptionsDelegate = function (req, callback) {
 }
 
 // view engine setup
-app.use(express.static(path.join(__dirname,'../Client/dist')));
+app.use(express.static(path.join(__dirname,'../client/dist')));
 
 app.use(logger('dev'));
 app.use(express.json());
