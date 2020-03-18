@@ -26,7 +26,7 @@ const corsOptionsDelegate = function (req, callback) {
 }
 
 // view engine setup
-app.use(express.static(path.join(__dirname,'../client/dist')));
+app.use(express.static(path.join(__dirname,'../Client/dist')));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('*',(req, res)=>{
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+  res.sendFile(path.join(__dirname, '../Client1/dist/index.html'))
 })
 
 app.use('/createSheet', createSheet);
