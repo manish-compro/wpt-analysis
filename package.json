@@ -11,7 +11,7 @@
     "start": "run-p start:api start:web",
     "start:web": "npm start --prefix client",
     "start:api": "npm start --prefix server",
-    "heroku-postbuild": "npm start --prefix client",
+   
     "install": "run-s install:api install:web",
     "install:api": "npm install --prefix server",
     "install:web": "npm install --prefix client",
