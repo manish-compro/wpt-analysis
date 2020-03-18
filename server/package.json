@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 app"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
