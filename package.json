@@ -12,7 +12,7 @@
     "start:web": "npm start --prefix client",
     "start:api": "npm start --prefix server",
     "heroku-postbuild": "npm start --prefix client",
-    "install": "run-p install:api install:web",
+    "install": "run-s install:api install:web",
     "install:api": "cd server && npm install",
     "install:web": "cd client && npm install",
     "build-angular": "npm run build --prod --prefix Client",
