@@ -9,7 +9,7 @@ var cors = require('cors');
 var createSheet = require('./routes/createSheet');
 
 
-var port = process.env.PORT || '3000';
+var port = process.env.PORT || 3000;
 var app = express();
 
 
