@@ -1,5 +1,5 @@
 {
     "default":{
-        "allowedCORSDomains": ["http://localhost:4200","http://comprotms.herokuapp.com"]
+        "allowedCORSDomains": ["http://localhost:4200","https://wpt-analysis.herokuapp.com/"]
     }
 }
