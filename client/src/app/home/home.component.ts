@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { ResultData } from '../resultdata.interface'
 import { AppHelperService } from '../app-helper.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { AppHelperService } from '../app-helper.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  
+  showSheet = false;
   resultData : ResultData  = {run : '', step: '', label: '', loadtime: '', thumbnailUrl: '', miss : false};
   arrayResult = new Array();
   requestData = {
@@ -20,20 +22,24 @@ export class HomeComponent implements OnInit {
   tempSheetName = '';
 
   wptLinkForm = new FormGroup({
-    wptTestid : new FormControl('', Validators.required),
+    wptTestLink : new FormControl('', Validators.required),
     sheetName : new FormControl('', Validators.required)
   })
-  constructor(private apphelper : AppHelperService) { }
+  constructor(private apphelper : AppHelperService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
-    console.log('entered link', this.wptLinkForm.value.wptTestid);
+    console.log('entered link', this.wptLinkForm.value.wptTestLink);
     console.log('sheetName', this.wptLinkForm.value.sheetName );
+    let id = this.wptLinkForm.value.wptTestLink.split('/')[4];
+    let testUrl = `https://www.webpagetest.org/jsonResult.php?test=${id}`;  
+    console.log('ssdsdsd', testUrl);
     
-    let testUrl = `https://www.webpagetest.org/jsonResult.php?test=${this.wptLinkForm.value.wptTestid}`;  
     this.fetchJSON(testUrl)
+    this.spinner.show();
+  
   }
 
   async  fetchJSON(url) {
@@ -108,7 +114,12 @@ export class HomeComponent implements OnInit {
     this.requestData.sheetName = `${this.wptLinkForm.value.sheetName}`
     console.log(this.requestData);
     console.log(JSON.stringify(this.requestData));
-    this.apphelper.postResultData(this.requestData).subscribe();
+    this.apphelper.postResultData(this.requestData).subscribe((res)=>{
+    console.log(res);
+    
+    });
+    this.spinner.hide();
+    this.showSheet = true;
    this.arrayResult = [];
     this.requestData = {
       data : [],

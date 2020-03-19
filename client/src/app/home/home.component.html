@@ -1,16 +1,29 @@
 <div class="container mt-2">
   <h1 class="display-4 text-center">WPT- Analysis</h1>
-
-  <form class="mt-5" [formGroup]="wptLinkForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="exampleInputEmail1">WPT TEST LINK</label>
-      <input type="url" class="form-control" id="wpt-testid" aria-describedby="wpt-testid" formControlName="wptTestid">
-      <small id="urlHelp" class="form-text text-muted">Please provide test id.</small>
-
-      <label class="mt-3" for="sheetName">Sheet Name</label>
-      <input type="name" class="form-control" id="sheetName" aria-describedby="sheetName" formControlName="sheetName">
-      <small id="sheetNameHelp" class="form-text text-muted">Please provide sheet name.</small>
-    </div>
-    <button type="submit" [disabled]="!wptLinkForm.valid" class="btn btn-primary">Submit</button>
-  </form>
+  <div class="jumbotron shadow m-5">
+    <form class="mt-5" [formGroup]="wptLinkForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">WPT TEST LINK</label>
+        <input type="url" class="form-control" id="wpt-testid" aria-describedby="wpt-testid" formControlName="wptTestLink">
+        <small id="urlHelp" class="form-text text-muted">Please provide test id.</small>
+  
+        <label class="mt-3" for="sheetName">Sheet Name</label>
+        <input type="name" class="form-control" id="sheetName" aria-describedby="sheetName" formControlName="sheetName">
+        <small id="sheetNameHelp" class="form-text text-muted">Please provide sheet name.</small>
+      </div>
+      <button type="submit" [disabled]="!wptLinkForm.valid" class="btn btn-primary">Submit</button>
+    </form>
+  
+  
+    <a *ngIf="showSheet" href="https://docs.google.com/spreadsheets/d/1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc/edit#gid=939962859" target="_blank"><button class="btn btn-block btn-outline-success my-5" >Google Sheet</button></a>
+  </div>
+  
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-rotate"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
 </div>

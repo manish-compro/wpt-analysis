@@ -9,19 +9,20 @@ const doc = new GoogleSpreadsheet('1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc'
  router.post('/', function(req, res, next) {
 
 
-createSheet(req.body);
-res.status(200).send('gotch');
+ createSheet(req, res);
+
     // Authorize a client with credentials, then call the Google Sheets API.
     //authorize(listMajors);
 
 
 });
 
- async function createSheet(req){
+ async function createSheet(req, res){
+    try {
     await doc.useServiceAccountAuth(keys);
     await doc.loadInfo();
     console.log(doc.title);
-    const sheet = await doc.addSheet({ title: req.sheetName,  headerValues: ['run','step','label', 'miss', 'loadtime','thumbnailUrl']  });
+    const sheet = await doc.addSheet({ title: req.body.sheetName,  headerValues: ['run','step','label', 'miss', 'loadtime','thumbnailUrl']  });
     await sheet.loadCells('A1:H10');
     
     const a1 = sheet.getCell(0, 0)
@@ -38,20 +39,10 @@ res.status(200).send('gotch');
     d1.backgroundColor = { green : 1 };
     e1.backgroundColor = { green : 1 };
     f1.backgroundColor = { green : 1 };
-
-    const larryRow = await sheet.addRows(req.data);
-
-  
-
-
-
-
-
-
     
-
-   
-    a1.textFormat = { bold: true };
+    await sheet.addRows(req.body.data);
+    
+     a1.textFormat = { bold: true };
     b1.textFormat = { bold: true };
     c1.textFormat = { bold: true };
     d1.textFormat = { bold: true };
@@ -60,6 +51,16 @@ res.status(200).send('gotch');
   
 
     await sheet.saveUpdatedCells();
+
+   
+        return res.status(200).send("data sent to sheets");
+    } catch (error) {
+        console.log(error);
+        
+        return res.status(400).send("bad request");
+    }
+    
+    
 }
 
 

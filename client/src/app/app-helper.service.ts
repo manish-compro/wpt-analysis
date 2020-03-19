@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
+import {  tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,10 @@ export class AppHelperService {
      'responseType': 'text' })};
      
 
-     postResultData(resultData): Observable<any>{ 
+     postResultData(resultData): Observable<any>{ debugger
 
-       return this.http.post<any>(this.baseUrl, resultData, this.httpOptions);
+       return this.http.post<any>(this.baseUrl, resultData, this.httpOptions).pipe(
+        tap((resultData) => console.log("data sent")));
      }
 
 }
