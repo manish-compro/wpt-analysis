@@ -18,7 +18,7 @@ export class AppHelperService {
      'responseType': 'text' })};
      
 
-     postResultData(resultData): Observable<any>{ debugger
+     postResultData(resultData): Observable<any>{ 
 
        return this.http.post<any>(this.baseUrl, resultData, this.httpOptions).pipe(
         tap((resultData) => console.log("data sent")));

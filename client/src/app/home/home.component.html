@@ -1,11 +1,11 @@
 <div class="container mt-2">
-  <h1 class="display-4 text-center">WPT- Analysis</h1>
-  <div class="jumbotron shadow m-5">
+  <h1 class="display-4 mt-5 mx-5">WPT- Analysis</h1>
+  <div class="jumbotron shadow mx-5">
     <form class="mt-5" [formGroup]="wptLinkForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="exampleInputEmail1">WPT TEST LINK</label>
         <input type="url" class="form-control" id="wpt-testid" aria-describedby="wpt-testid" formControlName="wptTestLink">
-        <small id="urlHelp" class="form-text text-muted">Please provide test id.</small>
+        <small id="urlHelp" class="form-text text-muted">Please provide web page test link.</small>
   
         <label class="mt-3" for="sheetName">Sheet Name</label>
         <input type="name" class="form-control" id="sheetName" aria-describedby="sheetName" formControlName="sheetName">
