@@ -31,8 +31,7 @@ const doc = new GoogleSpreadsheet('1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc'
     const d1 = sheet.getCell(0, 3)
     const e1 = sheet.getCell(0, 4)
     const f1 = sheet.getCell(0, 5)
-    const i1 = sheet.getcell(0,9);    
-    const h1 = sheet.getcell(0, 8)
+
 
     a1.backgroundColor = { green : 1 };
     b1.backgroundColor = { green : 1 };
@@ -42,8 +41,7 @@ const doc = new GoogleSpreadsheet('1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc'
     f1.backgroundColor = { green : 1 };
     
     await sheet.addRows(req.body.data);
-    h1.value = 'Test Link:';
-    i1.value = req.body.testUrl;
+    
 
     
     a1.textFormat = { bold: true };
