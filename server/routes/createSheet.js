@@ -50,7 +50,7 @@ const doc = new GoogleSpreadsheet('1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc'
     d1.textFormat = { bold: true };
     e1.textFormat = { bold: true };
     f1.textFormat = { bold: true };
-    h1.textFormat = { bold: true };
+    
   
 
     await sheet.saveUpdatedCells();
