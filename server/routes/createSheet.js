@@ -31,23 +31,28 @@ const doc = new GoogleSpreadsheet('1TyKraiaM7Pqwxmm2VJx2TPpkTiYdmzw9d8PalBU4iwc'
     const d1 = sheet.getCell(0, 3)
     const e1 = sheet.getCell(0, 4)
     const f1 = sheet.getCell(0, 5)
+    const i1 = sheet.getcell(0,9);    
+    const h1 = sheet.getcell(0, 8)
 
-    //const h1 = sheet.getcell(0, 8)
     a1.backgroundColor = { green : 1 };
-    b1.backgroundColor = { green : 1};
+    b1.backgroundColor = { green : 1 };
     c1.backgroundColor = { green : 1 };
     d1.backgroundColor = { green : 1 };
     e1.backgroundColor = { green : 1 };
     f1.backgroundColor = { green : 1 };
     
     await sheet.addRows(req.body.data);
+    h1.value = 'Test Link:';
+    i1.value = req.body.testUrl;
+
     
-     a1.textFormat = { bold: true };
+    a1.textFormat = { bold: true };
     b1.textFormat = { bold: true };
     c1.textFormat = { bold: true };
     d1.textFormat = { bold: true };
     e1.textFormat = { bold: true };
     f1.textFormat = { bold: true };
+    h1.textFormat = { bold: true };
   
 
     await sheet.saveUpdatedCells();
