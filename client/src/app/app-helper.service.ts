@@ -10,7 +10,7 @@ export class AppHelperService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:3000/createSheet';
+  baseUrl = 'https://wpt-analysis.herokuapp.com/createSheet';
 
   httpOptions = {
     headers: new HttpHeaders({
